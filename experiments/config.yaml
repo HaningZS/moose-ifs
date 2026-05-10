@@ -1,0 +1,22 @@
+# Paper Experiment Configuration
+
+moose:
+  # Explicit moose-opt path (overrides auto-detection)
+  # explicit_path: /opt/moose/bin/moose-opt
+  conda_env: moose
+  timeout: 120
+  skip_if_unavailable: true
+
+refinement:
+  # IFS threshold: internal IFS >= this stops refinement
+  # Final paper threshold calibrated during pilot runs
+  ifs_threshold: 0.85
+  max_iterations: 3
+
+experiment:
+  temperature: 0
+  max_retries: 3
+
+benchmark:
+  prompts_dir: experiments/moosebench_clean/index.json
+  ground_truth_dir: experiments/moosebench_clean/ground_truth

@@ -1,0 +1,204 @@
+[
+  {
+    "id": "S1_no_td_1d",
+    "ifs": 0.6774,
+    "l2_error": 1.00966,
+    "category": "structural"
+  },
+  {
+    "id": "S2_no_td_mat",
+    "ifs": 0.6947,
+    "l2_error": 0.727401,
+    "category": "structural"
+  },
+  {
+    "id": "S3_reversed_bc",
+    "ifs": 0.8871,
+    "l2_error": 1.407508,
+    "category": "structural"
+  },
+  {
+    "id": "S4_missing_bc_2d",
+    "ifs": 0.8473,
+    "l2_error": 0.271065,
+    "category": "structural"
+  },
+  {
+    "id": "S5_swapped_tb_2d",
+    "ifs": 0.8986,
+    "l2_error": 0.292494,
+    "category": "structural"
+  },
+  {
+    "id": "S6_no_td_plus_bc",
+    "ifs": 0.621,
+    "l2_error": 0.560441,
+    "category": "structural"
+  },
+  {
+    "id": "S7_no_td_reversed",
+    "ifs": 0.5645,
+    "l2_error": 1.84174,
+    "category": "structural"
+  },
+  {
+    "id": "S8_missing_2bc_2d",
+    "ifs": 0.6774,
+    "l2_error": 0.313871,
+    "category": "structural"
+  },
+  {
+    "id": "V1_bc_val_small_2d",
+    "ifs": 0.9493,
+    "l2_error": 0.04525,
+    "category": "bc_value"
+  },
+  {
+    "id": "V2_bc_val_med_2d",
+    "ifs": 0.9493,
+    "l2_error": 0.226252,
+    "category": "bc_value"
+  },
+  {
+    "id": "V3_bc_val_large_2d",
+    "ifs": 0.9493,
+    "l2_error": 0.452504,
+    "category": "bc_value"
+  },
+  {
+    "id": "V4_bc_val_1d",
+    "ifs": 0.9435,
+    "l2_error": 0.5,
+    "category": "bc_value"
+  },
+  {
+    "id": "V5_bc_val_large_1d",
+    "ifs": 0.9435,
+    "l2_error": 0.9,
+    "category": "bc_value"
+  },
+  {
+    "id": "S9_wrong_bc_left",
+    "ifs": 0.8291,
+    "l2_error": 0.288405,
+    "category": "structural"
+  },
+  {
+    "id": "S10_missing_left_2d",
+    "ifs": 0.8473,
+    "l2_error": 0.516366,
+    "category": "structural"
+  },
+  {
+    "id": "S11_missing_lr_2d",
+    "ifs": 0.6774,
+    "l2_error": 0.524978,
+    "category": "structural"
+  },
+  {
+    "id": "S12_no_td_no_lbc",
+    "ifs": 0.4872,
+    "l2_error": 1.0,
+    "category": "structural"
+  },
+  {
+    "id": "K1_coeff_med",
+    "ifs": 1.0,
+    "l2_error": 0.304912,
+    "category": "coefficient"
+  },
+  {
+    "id": "K2_coeff_large",
+    "ifs": 1.0,
+    "l2_error": 0.619419,
+    "category": "coefficient"
+  },
+  {
+    "id": "diffusion_015_remove_td",
+    "case": "diffusion_015",
+    "perturbation": "remove_td",
+    "ifs": 0.7241,
+    "l2_error": 4.30852,
+    "category": "structural"
+  },
+  {
+    "id": "coupled_016_remove_td",
+    "case": "coupled_016",
+    "perturbation": "remove_td",
+    "ifs": 0.8616,
+    "l2_error": 1.040687,
+    "category": "structural"
+  },
+  {
+    "id": "diffusion_008_remove_source",
+    "case": "diffusion_008",
+    "perturbation": "remove_source",
+    "ifs": 0.9429,
+    "l2_error": 0.99241,
+    "category": "structural"
+  },
+  {
+    "id": "diffusion_003_swap_bc",
+    "case": "diffusion_003",
+    "perturbation": "swap_bc",
+    "ifs": 0.7619,
+    "l2_error": 0.648003,
+    "category": "structural"
+  },
+  {
+    "id": "diffusion_005_swap_bc",
+    "case": "diffusion_005",
+    "perturbation": "swap_bc",
+    "ifs": 0.7802,
+    "l2_error": 0.79326,
+    "category": "structural"
+  },
+  {
+    "id": "coupled_010_swap_bc",
+    "case": "coupled_010",
+    "perturbation": "swap_bc",
+    "ifs": 0.8758,
+    "l2_error": 0.5,
+    "category": "structural"
+  },
+  {
+    "id": "thermal_016_swap_bc",
+    "case": "thermal_016",
+    "perturbation": "swap_bc",
+    "ifs": 0.8726,
+    "l2_error": 2e-05,
+    "category": "structural"
+  },
+  {
+    "id": "coupled_007_wrong_coeff",
+    "case": "coupled_007",
+    "perturbation": "wrong_coeff",
+    "ifs": 1.0,
+    "l2_error": 0.664713,
+    "category": "coefficient"
+  },
+  {
+    "id": "coupled_019_wrong_coeff",
+    "case": "coupled_019",
+    "perturbation": "wrong_coeff",
+    "ifs": 1.0,
+    "l2_error": 0.90457,
+    "category": "coefficient"
+  },
+  {
+    "id": "diffusion_008_wrong_coeff",
+    "case": "diffusion_008",
+    "perturbation": "wrong_coeff",
+    "ifs": 1.0,
+    "l2_error": 0.249223,
+    "category": "coefficient"
+  },
+  {
+    "id": "diffusion_015_wrong_coeff",
+    "case": "diffusion_015",
+    "perturbation": "wrong_coeff",
+    "ifs": 1.0,
+    "l2_error": 0.626166,
+    "category": "coefficient"
+  }
+]

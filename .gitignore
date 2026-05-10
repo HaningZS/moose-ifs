@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# OS/editor
+.DS_Store
+.idea/
+.vscode/
+
+# Generated experiment output
+experiments/results/*_artifacts/*/*_out.e
+experiments/results/*_artifacts/*/*_out.csv
+results/figures/*.png
+results/figures/*.pdf
+results/derived/mcs_repair_smoke/
+
+# Local secrets
+.env
+*.env

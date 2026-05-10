@@ -1,0 +1,84 @@
+{
+  "metadata": {
+    "description": "Compact aggregate summaries for the paper tables. This file contains aggregate values only, with no per-case generations, code paths, repair metadata, provider logs, or local paths.",
+    "benchmark": "MooseBench clean 220-case release",
+    "ifs_convention": "Unconditional mean IFS; parse/model failures are scored as 0 where applicable.",
+    "exec_convention": "InitExec2: exit code 0, or first nonlinear/linear solve starts before first detected error, or no error within 2 seconds.",
+    "units": {
+      "mean_ifs": "score in [0, 1]",
+      "ci95_half_width": "score in [0, 1]",
+      "exec_rate": "fraction of all 220 cases",
+      "good_exec": "fraction of all 220 cases",
+      "false_exec": "fraction of all 220 cases",
+      "parse_rate": "fraction of all 220 cases when reported"
+    }
+  },
+  "ordinary_220_case_sweeps": [
+    {"table": "main", "model": "Claude Sonnet 4.6", "method": "Direct", "n": 220, "mean_ifs": 0.744, "ci95_half_width": 0.032, "parse_rate": null, "exec_rate": null, "good_exec": null, "false_exec": null},
+    {"table": "main", "model": "Claude Sonnet 4.6", "method": "SpecGen", "n": 220, "mean_ifs": 0.800, "ci95_half_width": 0.023, "parse_rate": null, "exec_rate": null, "good_exec": null, "false_exec": null},
+    {"table": "main", "model": "Claude Sonnet 4.6", "method": "PDE-Refine", "n": 220, "mean_ifs": 0.816, "ci95_half_width": 0.021, "parse_rate": null, "exec_rate": null, "good_exec": null, "false_exec": null},
+    {"table": "main", "model": "GPT-5.4", "method": "Direct", "n": 220, "mean_ifs": 0.756, "ci95_half_width": 0.033, "parse_rate": null, "exec_rate": null, "good_exec": null, "false_exec": null},
+    {"table": "main", "model": "GPT-5.4", "method": "SpecGen", "n": 220, "mean_ifs": 0.769, "ci95_half_width": 0.028, "parse_rate": null, "exec_rate": null, "good_exec": null, "false_exec": null},
+    {"table": "main", "model": "GPT-5.4", "method": "PDE-Refine", "n": 220, "mean_ifs": 0.802, "ci95_half_width": 0.025, "parse_rate": null, "exec_rate": null, "good_exec": null, "false_exec": null},
+    {"table": "main", "model": "DeepSeek V4 Flash", "method": "Direct", "n": 220, "mean_ifs": 0.599, "ci95_half_width": 0.048, "parse_rate": null, "exec_rate": null, "good_exec": null, "false_exec": null},
+    {"table": "main", "model": "DeepSeek V4 Flash", "method": "SpecGen", "n": 220, "mean_ifs": 0.668, "ci95_half_width": 0.045, "parse_rate": null, "exec_rate": null, "good_exec": null, "false_exec": null},
+    {"table": "main", "model": "DeepSeek V4 Flash", "method": "PDE-Refine", "n": 220, "mean_ifs": 0.782, "ci95_half_width": 0.031, "parse_rate": null, "exec_rate": null, "good_exec": null, "false_exec": null}
+  ],
+  "deployment_audit_220_case": [
+    {"table": "exec_audit", "model": "Claude Sonnet 4.6", "method": "Exec-Repair+Reg", "n": 220, "mean_ifs": 0.753, "exec_rate": 0.832, "good_exec": 0.432, "false_exec": 0.400, "parse_rate": null},
+    {"table": "exec_audit", "model": "Claude Sonnet 4.6", "method": "PDE-Reg", "n": 220, "mean_ifs": 0.854, "exec_rate": 0.914, "good_exec": 0.600, "false_exec": 0.314, "parse_rate": null},
+    {"table": "exec_audit", "model": "GPT-5.4", "method": "Exec-Repair+Reg", "n": 220, "mean_ifs": 0.757, "exec_rate": 0.823, "good_exec": 0.423, "false_exec": 0.400, "parse_rate": null},
+    {"table": "exec_audit", "model": "GPT-5.4", "method": "PDE-Reg", "n": 220, "mean_ifs": 0.839, "exec_rate": 0.868, "good_exec": 0.568, "false_exec": 0.300, "parse_rate": null},
+    {"table": "exec_audit", "model": "DeepSeek V4 Flash", "method": "Exec-Repair+Reg", "n": 220, "mean_ifs": 0.626, "exec_rate": 0.741, "good_exec": 0.350, "false_exec": 0.391, "parse_rate": null},
+    {"table": "exec_audit", "model": "DeepSeek V4 Flash", "method": "PDE-Reg", "n": 220, "mean_ifs": 0.824, "exec_rate": 0.877, "good_exec": 0.600, "false_exec": 0.277, "parse_rate": null}
+  ],
+  "official_document_access_control": [
+    {"table": "rag_baseline", "model": "DeepSeek V4 Flash", "method": "DocsDirect", "n": 220, "mean_ifs": 0.672, "exec_rate": 0.418, "good_exec": 0.255, "false_exec": 0.164, "parse_rate": null},
+    {"table": "rag_baseline", "model": "DeepSeek V4 Flash", "method": "Docs+ExecRepair", "n": 220, "mean_ifs": 0.660, "exec_rate": 0.741, "good_exec": 0.359, "false_exec": 0.382, "parse_rate": null},
+    {"table": "rag_baseline", "model": "DeepSeek V4 Flash", "method": "Docs+PDE-Reg", "n": 220, "mean_ifs": 0.816, "exec_rate": 0.873, "good_exec": 0.586, "false_exec": 0.286, "parse_rate": null}
+  ],
+  "weak_model_registry_stress": [
+    {"table": "weak_model_registry", "model": "GPT-4.1-mini", "method": "Exec-Repair+Reg", "n": 220, "mean_ifs": 0.346, "exec_rate": 0.255, "good_exec": 0.036, "false_exec": 0.218, "parse_rate": null},
+    {"table": "weak_model_registry", "model": "GPT-4.1-mini", "method": "PDE-Reg", "n": 220, "mean_ifs": 0.703, "exec_rate": 0.632, "good_exec": 0.436, "false_exec": 0.195, "parse_rate": null},
+    {"table": "weak_model_registry", "model": "Claude Haiku 4.5", "method": "Exec-Repair+Reg", "n": 220, "mean_ifs": 0.735, "exec_rate": 0.741, "good_exec": 0.391, "false_exec": 0.350, "parse_rate": null},
+    {"table": "weak_model_registry", "model": "Claude Haiku 4.5", "method": "PDE-Reg", "n": 220, "mean_ifs": 0.811, "exec_rate": 0.800, "good_exec": 0.482, "false_exec": 0.318, "parse_rate": null},
+    {"table": "weak_model_registry", "model": "Gemini 3.1 Flash Lite", "method": "Exec-Repair+Reg", "n": 220, "mean_ifs": 0.671, "exec_rate": 0.518, "good_exec": 0.236, "false_exec": 0.282, "parse_rate": null},
+    {"table": "weak_model_registry", "model": "Gemini 3.1 Flash Lite", "method": "PDE-Reg", "n": 220, "mean_ifs": 0.828, "exec_rate": 0.850, "good_exec": 0.559, "false_exec": 0.291, "parse_rate": null}
+  ],
+  "mixed_model_ablation": [
+    {"table": "cross_ablation", "extractor": "GPT-5.4", "generator": "GPT-5.4", "method": "PDE-Refine", "n": 220, "mean_ifs": 0.792, "error_count": 0, "parse_rate": 1.000},
+    {"table": "cross_ablation", "extractor": "DeepSeek V4 Flash", "generator": "DeepSeek V4 Flash", "method": "PDE-Refine", "n": 220, "mean_ifs": 0.764, "error_count": 12, "parse_rate": 0.945},
+    {"table": "cross_ablation", "extractor": "GPT-5.4", "generator": "DeepSeek V4 Flash", "method": "PDE-Refine", "n": 220, "mean_ifs": 0.772, "error_count": 0, "parse_rate": 1.000},
+    {"table": "cross_ablation", "extractor": "DeepSeek V4 Flash", "generator": "GPT-5.4", "method": "PDE-Refine", "n": 220, "mean_ifs": 0.783, "error_count": 8, "parse_rate": 0.964},
+    {"table": "cross_ablation", "extractor": "Gemini 3.1 Flash Lite", "generator": "Gemini 3.1 Flash Lite", "method": "PDE-Refine", "n": 220, "mean_ifs": 0.796, "error_count": 0, "parse_rate": 1.000},
+    {"table": "cross_ablation", "extractor": "DeepSeek V4 Flash", "generator": "DeepSeek V4 Flash", "method": "PDE-Refine", "n": 220, "mean_ifs": 0.764, "error_count": 12, "parse_rate": 0.945},
+    {"table": "cross_ablation", "extractor": "Gemini 3.1 Flash Lite", "generator": "DeepSeek V4 Flash", "method": "PDE-Refine", "n": 220, "mean_ifs": 0.784, "error_count": 1, "parse_rate": 0.995},
+    {"table": "cross_ablation", "extractor": "DeepSeek V4 Flash", "generator": "Gemini 3.1 Flash Lite", "method": "PDE-Refine", "n": 220, "mean_ifs": 0.791, "error_count": 7, "parse_rate": 0.968}
+  ],
+  "mcs_diagnostics": {
+    "table": "mcs_contract",
+    "survey": {
+      "total_outputs": 220,
+      "comparable_outputs": 176,
+      "high_ifs_low_mcs_outputs": 32,
+      "mismatch_facts": {
+        "kernel": 125,
+        "bc": 79,
+        "material": 279,
+        "material_model": 110
+      }
+    },
+    "diagnostic_subset": {
+      "cases": 22,
+      "accepted_outputs": 22,
+      "mean_ifs_before": 0.959,
+      "mean_ifs_after": 0.987,
+      "mean_mcs_before": 0.316,
+      "mean_mcs_after": 0.985,
+      "mean_mcs_mismatches_before": 3.91,
+      "mean_mcs_mismatches_after": 0.05,
+      "cases_with_mcs_1_before": 0,
+      "cases_with_mcs_1_after": 21
+    }
+  }
+}

@@ -1,0 +1,68 @@
+[
+  {
+    "case_id": "diffusion_002",
+    "family": "diffusion",
+    "model": "Gemini 3.1 Flash Lite",
+    "purpose": "paired generated-code example showing how PDE/IFS feedback changes runnable code",
+    "baseline_violation_summary": "baseline keeps the problem runnable but misses the intended transient diffusion structure and boundary orientation.",
+    "pde_reg_violation_summary": "PDE-Reg restores the transient diffusion contract and the intended Dirichlet boundary values.",
+    "files": [
+      {
+        "method": "Exec-Repair+Reg",
+        "file": "diffusion_002_exec_repair_reg.i",
+        "ifs": 0.564516,
+        "initexec2_pass": true
+      },
+      {
+        "method": "PDE-Reg",
+        "file": "diffusion_002_pde_reg.i",
+        "ifs": 0.946565,
+        "initexec2_pass": true
+      }
+    ]
+  },
+  {
+    "case_id": "fluid_009",
+    "family": "navier_stokes",
+    "model": "Gemini 3.1 Flash Lite",
+    "purpose": "paired generated-code example showing how PDE/IFS feedback changes runnable code",
+    "baseline_violation_summary": "baseline is runnable but loses core flow-operator structure under IFS.",
+    "pde_reg_violation_summary": "PDE-Reg preserves the normalized flow operator structure while remaining runnable.",
+    "files": [
+      {
+        "method": "Exec-Repair+Reg",
+        "file": "fluid_009_exec_repair_reg.i",
+        "ifs": 0.58427,
+        "initexec2_pass": true
+      },
+      {
+        "method": "PDE-Reg",
+        "file": "fluid_009_pde_reg.i",
+        "ifs": 0.960674,
+        "initexec2_pass": true
+      }
+    ]
+  },
+  {
+    "case_id": "framework_011",
+    "family": "framework",
+    "model": "Gemini 3.1 Flash Lite",
+    "purpose": "paired generated-code example showing how PDE/IFS feedback changes runnable code",
+    "baseline_violation_summary": "baseline is runnable but omits a source contribution visible in the IFS report.",
+    "pde_reg_violation_summary": "PDE-Reg recovers the missing source term and reaches perfect IFS on this case.",
+    "files": [
+      {
+        "method": "Exec-Repair+Reg",
+        "file": "framework_011_exec_repair_reg.i",
+        "ifs": 0.666667,
+        "initexec2_pass": true
+      },
+      {
+        "method": "PDE-Reg",
+        "file": "framework_011_pde_reg.i",
+        "ifs": 1.0,
+        "initexec2_pass": true
+      }
+    ]
+  }
+]
