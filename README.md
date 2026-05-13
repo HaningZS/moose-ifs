@@ -1,15 +1,52 @@
-# MooseBench + IFS Paper Artifact
+# PDE-Refine
+
+<p align="center">
+  <a href="https://arxiv.org/abs/2605.09360"><img alt="arXiv:2605.09360" src="https://img.shields.io/badge/arXiv-2605.09360-b31b1b.svg"></a>
+  <a href="https://arxiv.org/pdf/2605.09360"><img alt="Paper PDF" src="https://img.shields.io/badge/Paper-PDF-2f6f9f.svg"></a>
+  <img alt="MooseBench" src="https://img.shields.io/badge/MooseBench-220%20cases-4b5563.svg">
+  <img alt="IFS" src="https://img.shields.io/badge/Intent%20Fidelity%20Score-PDE%20grounded-0f766e.svg">
+</p>
+
+<p align="center">
+  <strong>MooseBench + IFS artifact for PDE-Refine</strong><br>
+  <em>Intent-fidelity verification for LLM-generated multiphysics simulation code</em>
+</p>
+
+<p align="center">
+  <a href="https://arxiv.org/abs/2605.09360"><strong>Read the paper on arXiv</strong></a>
+</p>
 
 This repository contains the clean artifact for the submitted paper experiments.
 
 **TL;DR.** LLM-generated MOOSE simulations can execute while encoding the wrong
 PDE. This artifact releases the deterministic PDE reconstruction / Intent
 Fidelity Score (IFS) stack, the clean 220-case MooseBench benchmark, the
-machine-readable Kernel--PDE mapping, release-format per-case evaluation
-records, compact aggregate paper-table summaries, representative generated-code
-examples, and final derived figures. Full LLM run JSONLs, execution-audit JSONs,
-provider logs, and generated-code caches are not included in this lightweight
-release package.
+release-format per-case evaluation records, compact aggregate paper-table
+summaries, representative generated-code examples, and final derived figures.
+Full prompts, complete input files, the machine-readable Kernel--PDE map, full
+LLM run JSONLs, execution-audit JSONs, provider logs, and generated-code caches
+are not included in this lightweight release package.
+
+## Paper Overview
+
+The workflow below shows how PDE-Refine turns deterministic intent-fidelity
+violations into targeted code repairs, separating "the simulation runs" from
+"the simulation solves the intended physics."
+
+<p align="center">
+  <a href="artifacts/pde_refine_workflow_v2.pdf">
+    <img src="artifacts/pde_refine_workflow_v2.png" alt="PDE-Refine workflow" width="920">
+  </a>
+</p>
+
+The compact diagnostic view summarizes where the pipeline surfaces physics
+mismatches that execution-only checks can miss.
+
+<p align="center">
+  <a href="artifacts/pipeline_diagnostics_compact.pdf">
+    <img src="artifacts/pipeline_diagnostics_compact.png" alt="Pipeline diagnostics" width="920">
+  </a>
+</p>
 
 ## Quick Start
 
@@ -18,7 +55,6 @@ No API key is needed for the validation commands below:
 ```bash
 uv sync --group dev
 uv run python scripts/validate_moosebench.py
-uv run python scripts/validate_kernel_map.py
 python -m json.tool results/derived/main_tables.json | head -n 40
 wc -l results/derived/eval_records.jsonl
 ```
@@ -26,7 +62,6 @@ wc -l results/derived/eval_records.jsonl
 Expected validation summaries:
 
 - `scripts/validate_moosebench.py`: 220 OK, 0 FAIL.
-- `scripts/validate_kernel_map.py`: schema validation PASS.
 
 ## Contents
 
@@ -35,10 +70,11 @@ Expected validation summaries:
 | PDE / IFS / MCS engine | `src/codmos/multiagent/pde/` | Deterministic MOOSE-to-physics reconstruction and intent-fidelity scoring. |
 | Object-realization control layer | `src/codmos/multiagent/object_realization.py` | Frozen registry support used for execution-control comparisons. |
 | MooseBench release | `experiments/moosebench_clean/` | Clean 220-case benchmark contracts and source MOOSE inputs. |
-| Kernel--PDE mapping | `data/pde_mapping/kernel_map.yaml` | Machine-readable operator, severity, coefficient, equivalence, and source-traceability map. |
+| Kernel--PDE mapping | By request | Machine-readable operator, severity, coefficient, equivalence, and source-traceability map; email the authors for access. |
 | Aggregate table summaries | `results/derived/main_tables.json` | Compact final paper-table values only; no per-case generations or repair metadata. |
 | Per-case evaluation records | `results/derived/eval_records.jsonl` | Release-format fields for core standard, deployment, weak-model, and mixed-model aggregates; no code paths, provider logs, or repair traces. |
 | Representative generated examples | `examples/generated/` | Three paired Exec-Repair+Reg vs PDE-Reg generated `.i` examples that pass InitExec2 and show IFS improvements. |
+| README visual artifacts | `artifacts/` | Paper workflow and compact diagnostic figures as source PDFs plus rendered PNGs for GitHub display. |
 | Derived diagnostics | `results/derived/` | Small IFS/L2 and MCS diagnostic inputs for figure regeneration. |
 | Final figures | `results/figures/` | Released paper figures retained for inspection. |
 | Scripts | `scripts/` | Validation, analysis, execution-audit, and figure-generation utilities. |
@@ -57,7 +93,6 @@ RESULT_DIR=experiments/results/current
 | Paper artifact | Command | Requires full run JSONLs? |
 |---|---|---|
 | Clean MooseBench integrity | `uv run python scripts/validate_moosebench.py` | No |
-| Kernel map integrity | `uv run python scripts/validate_kernel_map.py` | No |
 | Main paper table summaries | `python -m json.tool results/derived/main_tables.json` | No |
 | Per-case table records | `jq -s 'group_by([.table,.model,.method,.extractor,.generator,.comparison_pair])[] | {table:.[0].table, model:.[0].model, method:.[0].method, extractor:.[0].extractor, generator:.[0].generator, n:length, mean_ifs:(map(.ifs)|add/length)}' results/derived/eval_records.jsonl` | No |
 | Compact pipeline / execution figures | `uv run python scripts/generate_paper_figures.py --results-dir "$RESULT_DIR"` | Yes |
@@ -85,8 +120,13 @@ compatible local `combined-opt` binary through the `--moose-app` argument.
   index.
 - `ground_truth/` contains PDE-level ground-truth contracts.
 - `source_files/` contains the corresponding reference MOOSE input files.
-- `modified_source_ids.json` records the current source-update slice used by
-  rerun utilities.
+
+The full MooseBench package is not uploaded to this lightweight repository yet.
+If you need the full prompts, complete input files, or the machine-readable
+Kernel--PDE map, email `zs448@cornell.edu` or `yl3825@cornell.edu`; we will
+send the files when we see the request. Use of the dataset requires citing the
+source paper:
+[arXiv:2605.09360](https://arxiv.org/abs/2605.09360).
 
 Older benchmark snapshots and full benchmark-plus-exclude-list layouts are not
 part of this release package. Validate the release with:
@@ -97,17 +137,28 @@ uv run python scripts/validate_moosebench.py
 
 ## Kernel--PDE Mapping
 
-`data/pde_mapping/kernel_map.yaml` is the reusable, machine-readable mapping
-from covered MOOSE Kernel / BC / IC classes to normalized PDE operator types.
-It includes severity weights, coefficient extraction metadata, equivalence
-groups, and source-document traceability. Weak-form formula/display annotations
-are presented in the paper; the artifact keeps the fields needed for
-deterministic reconstruction and scoring.
+The paper describes the Kernel--PDE mapping from covered MOOSE Kernel / BC / IC
+classes to normalized PDE operator types, including severity weights,
+coefficient extraction metadata, equivalence groups, and source-document
+traceability. The machine-readable mapping file is not included in this
+lightweight repository yet; email `zs448@cornell.edu` or `yl3825@cornell.edu`
+for access.
 
-Validate the mapping with:
+## Citation
 
-```bash
-uv run python scripts/validate_kernel_map.py
+If you use MooseBench, the IFS implementation, or the released artifacts, please
+cite:
+
+```bibtex
+@misc{song2026simulationrunswrongphysics,
+  title        = {Your Simulation Runs but Solves the Wrong Physics: PDE-Grounded Intent Verification for LLM-Generated Multiphysics Simulation Code},
+  author       = {Zhenghan Song and Yulong Liu and Cheng Wan and Chenjun Li and Lingfu Liu and Yunyi Li and Congcong Yuan},
+  year         = {2026},
+  eprint       = {2605.09360},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.LG},
+  url          = {https://arxiv.org/abs/2605.09360}
+}
 ```
 
 ## Quick Demo
