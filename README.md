@@ -151,13 +151,13 @@ cite:
 
 ```bibtex
 @misc{song2026simulationrunswrongphysics,
-  title        = {Your Simulation Runs but Solves the Wrong Physics: PDE-Grounded Intent Verification for LLM-Generated Multiphysics Simulation Code},
-  author       = {Zhenghan Song and Yulong Liu and Cheng Wan and Chenjun Li and Lingfu Liu and Yunyi Li and Congcong Yuan},
-  year         = {2026},
-  eprint       = {2605.09360},
+  title         = {Your Simulation Runs but Solves the Wrong Physics: PDE-Grounded Intent Verification for LLM-Generated Multiphysics Simulation Code},
+  author        = {Zhenghan Song and Yulong Liu and others},
+  year          = {2026},
+  eprint        = {2605.09360},
   archivePrefix = {arXiv},
-  primaryClass = {cs.LG},
-  url          = {https://arxiv.org/abs/2605.09360}
+  primaryClass  = {cs.LG},
+  url           = {https://arxiv.org/abs/2605.09360}
 }
 ```
 
